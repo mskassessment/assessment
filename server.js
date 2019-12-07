@@ -72,7 +72,7 @@ app.get('/interventions', (req, res) => {
             }
         ]
     }
-    
+    res.json({apiResults: data})
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
