@@ -11,7 +11,7 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js"]
     },
 
-    devServer: {    
+    devServer: {
         contentBase: path.join(__dirname, 'dist'),
         publicPath: '/assets/',
     },
@@ -31,6 +31,10 @@ module.exports = {
                 enforce: "pre",
                 test: /\.js$/,
                 loader: "source-map-loader"
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },

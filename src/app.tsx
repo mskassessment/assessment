@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core';
 import SearchBar from "./searchBar";
+import InterventionsDisplay from "./interventionsDisplay";
 import './styles.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     return (
         <div>
             <SearchBar text={searchText} onChange={setSearchText} onSearch={onSearch} />
+            <InterventionsDisplay />
         </div>
     );
 }
