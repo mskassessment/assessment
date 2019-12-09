@@ -8,6 +8,7 @@ export default function InterventionsDisplay(props: InterventionsDisplayProps) {
 
     const columns = [
         { headerName: "Name", field: "name", width: 400 },
+        { headerName: "Codes", field: "codes", },
         { headerName: "Category", field: "category" },
         { headerName: "Count", field: "count" },
         { headerName: "Synonyms", field: "synonyms", width: 400 },
@@ -15,13 +16,15 @@ export default function InterventionsDisplay(props: InterventionsDisplayProps) {
     const visibleCategories = new Set(props.visibleCategories);
     const rows = props.interventions.terms
         .map(intervention => {
-            return { ...intervention, synonyms: intervention.synonyms.join(', ') }
+            const synonyms = intervention.synonyms.join(', ');
+            const codes = intervention.codes.join(', ');
+            return { ...intervention, synonyms, codes }
         })
         .filter(x => visibleCategories.has(x.category))
     const defaultColDef = {
         resizable: true
     }
-    
+
     return (
         <div className="ag-theme-balham" style={{ height: '800px', width: '1200px' }}>
             <AgGridReact
