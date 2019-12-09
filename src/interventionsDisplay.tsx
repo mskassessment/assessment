@@ -6,16 +6,24 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 
 
-const InterventionsDisplay = (props: any) => {
+export default function InterventionsDisplay(props: InterventionsDisplayProps) {
+
+    const columns = [
+        { headerName: "Name", field: "name", width: 400 },
+        { headerName: "Category", field: "category" },
+        { headerName: "Count", field: "Count" },
+        { headerName: "Synonyms", field: "synonyms", width: 400 },
+    ]
+    const rows = props.interventions.terms.map(intervention => {
+        return { ...intervention, synonyms: intervention.synonyms.join(', ') }
+    })
 
     return (
-        <div className="ag-theme-balham" style={{ height: '200px', width: '600px' }}>
+        <div className="ag-theme-balham" style={{ height: '800px', width: '1200px' }}>
             <AgGridReact
-                columnDefs={[]}
-                rowData={[]}>
+                columnDefs={columns}
+                rowData={rows}>
             </AgGridReact>
         </div>
     );
 }
-
-export default InterventionsDisplay;

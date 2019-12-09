@@ -1,0 +1,7 @@
+#search-container {
+    width: 800px
+}
+
+#search-container > * {
+    margin: 10px
+}
