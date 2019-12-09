@@ -2,8 +2,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-enterprise';
-import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import React from 'react';
 
 
 export default function InterventionsDisplay(props: InterventionsDisplayProps) {
@@ -14,9 +13,12 @@ export default function InterventionsDisplay(props: InterventionsDisplayProps) {
         { headerName: "Count", field: "Count" },
         { headerName: "Synonyms", field: "synonyms", width: 400 },
     ]
-    const rows = props.interventions.terms.map(intervention => {
-        return { ...intervention, synonyms: intervention.synonyms.join(', ') }
-    })
+    const visibleCategories = new Set(props.visibleCategories);
+    const rows = props.interventions.terms
+        .map(intervention => {
+            return { ...intervention, synonyms: intervention.synonyms.join(', ') }
+        })
+        .filter(x => visibleCategories.has(x.category))
 
     return (
         <div className="ag-theme-balham" style={{ height: '800px', width: '1200px' }}>
