@@ -10,7 +10,7 @@ export default function InterventionsDisplay(props: InterventionsDisplayProps) {
     const columns = [
         { headerName: "Name", field: "name", width: 400 },
         { headerName: "Category", field: "category" },
-        { headerName: "Count", field: "Count" },
+        { headerName: "Count", field: "count" },
         { headerName: "Synonyms", field: "synonyms", width: 400 },
     ]
     const visibleCategories = new Set(props.visibleCategories);
