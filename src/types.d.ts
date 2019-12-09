@@ -1,14 +1,27 @@
-type SearchBarProps = { 
+type SearchBarProps = {
     text: string
     onChange: React.Dispatch<React.SetStateAction<string>>
     onSearch: any
 }
 
-type SearchStatus = {
-    activeSearchTerm?: string
-    results?: SearchResults
+type InterventionsDisplayProps = {
+    interventions: ApiResults
+}
+
+type ApiResults = {
+    terms: Intervention[]
 }
 
 type SearchResults = {
-    term: string
+    allCategories?: string[]
+    visibleCategories?: string[]
+    results?: ApiResults
+}
+
+type Intervention = {
+    name: string,
+    codes: string[],
+    synonyms: string[],
+    category: string,
+    count: number
 }
