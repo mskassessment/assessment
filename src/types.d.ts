@@ -6,6 +6,7 @@ type SearchBarProps = {
 
 type InterventionsDisplayProps = {
     interventions: ApiResults
+    visibleCategories: string[]
 }
 
 type ApiResults = {

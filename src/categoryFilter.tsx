@@ -26,14 +26,18 @@ export default function ChipsArray(props: any) {
         <Paper>
             {props.allCategories.map((category: string, i: number) => {
                 let icon;
+                const classNames = [classes.chip]
                 const isActive = props.visibleCategories.includes(category)
-                console.log(isActive)
+                if (isActive) {
+                    classNames.push(classes.active)
+                }
                 return (
                     <Chip
                         key={i}
+                        onClick={evt => props.onCategoryClick(category)}
                         icon={icon}
                         label={category}
-                        className={classes.chip + ' ' + classes.active}
+                        className={classNames.join(' ')}
                     />
                 );
             })}
