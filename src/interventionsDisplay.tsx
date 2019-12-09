@@ -1,7 +1,6 @@
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import 'ag-grid-enterprise';
 import React from 'react';
 
 
@@ -19,12 +18,17 @@ export default function InterventionsDisplay(props: InterventionsDisplayProps) {
             return { ...intervention, synonyms: intervention.synonyms.join(', ') }
         })
         .filter(x => visibleCategories.has(x.category))
-
+    const defaultColDef = {
+        resizable: true
+    }
+    
     return (
         <div className="ag-theme-balham" style={{ height: '800px', width: '1200px' }}>
             <AgGridReact
                 columnDefs={columns}
-                rowData={rows}>
+                rowData={rows}
+                defaultColDef={defaultColDef}
+            >
             </AgGridReact>
         </div>
     );
