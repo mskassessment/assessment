@@ -7,8 +7,8 @@ const SearchBar = (props: SearchBarProps) => {
 
     return (
         <div>
-            <TextField value={props.text} onChange={evt => props.onChange(evt.target.value)} />
-            <Button onClick={props.onSearch}>Search</Button>
+            <TextField value={props.text} label="Search Interventions" onChange={evt => props.onChange(evt.target.value)} />
+            <Button variant="contained" color="primary"onClick={props.onSearch}>Search</Button>
         </div>
     );
 }

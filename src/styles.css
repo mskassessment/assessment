@@ -5,3 +5,7 @@
 #search-container > * {
     margin: 10px
 }
+
+.MuiInput-formControl {
+    margin-right: 10px
+}
